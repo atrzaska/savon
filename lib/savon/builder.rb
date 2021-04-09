@@ -133,7 +133,7 @@ module Savon
 
     def namespaced_message_tag
       tag_name = message_tag
-      return [tag_name] if @wsdl.document? and @wsdl.soap_input(@operation_name.to_sym).is_a?(Hash)
+      return [namespace_identifier, tag_name] if @wsdl.document? and @wsdl.soap_input(@operation_name.to_sym).is_a?(Hash)
       if namespace_identifier == nil
         [tag_name, message_attributes]
       elsif @used_namespaces[[tag_name.to_s]]
